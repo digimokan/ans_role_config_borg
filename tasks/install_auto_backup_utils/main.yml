@@ -1,0 +1,16 @@
+- name: "Install and configure cron daemon dependency"
+  ansible.builtin.include_role:
+    name: ext/ans_role_config_cron
+
+- name: "Install 'borgmatic' automatic backup utility for Ubuntu"
+  ansible.builtin.include_tasks: ubuntu/main.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: "Install 'borgmatic' automatic backup utility for Arch Linux"
+  ansible.builtin.include_tasks: archlinux/main.yml
+  when: ansible_os_family == "Archlinux"
+
+- name: "Install 'borgmatic' automatic backup utility for FreeBSD"
+  ansible.builtin.include_tasks: freebsd/main.yml
+  when: ansible_os_family == "FreeBSD"
+

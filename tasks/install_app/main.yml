@@ -1,0 +1,12 @@
+- name: "Install Borg application for Ubuntu"
+  ansible.builtin.include_tasks: ubuntu/main.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: "Install Borg application for Arch Linux"
+  ansible.builtin.include_tasks: archlinux/main.yml
+  when: ansible_os_family == "Archlinux"
+
+- name: "Install Borg application for FreeBSD"
+  ansible.builtin.include_tasks: freebsd/main.yml
+  when: ansible_os_family == "FreeBSD"
+

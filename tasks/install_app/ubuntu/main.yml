@@ -1,0 +1,7 @@
+- name: "Install the 'borgbackup' application package"
+  ansible.builtin.package:
+    name: borgbackup
+    state: present
+  become: true
+  become_user: root
+

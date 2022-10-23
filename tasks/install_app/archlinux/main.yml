@@ -1,0 +1,7 @@
+- name: "Install the 'borg' application package"
+  ansible.builtin.package:
+    name: borg
+    state: present
+  become: true
+  become_user: root
+

@@ -1,0 +1,7 @@
+- name: "Install the 'archivers/py-borgbackup' application package"
+  ansible.builtin.package:
+    name: archivers/py-borgbackup
+    state: present
+  become: true
+  become_user: root
+
