@@ -19,7 +19,7 @@ Install the Borg backup program, and configure backups to a remote repo.
 
 ## Purpose
 
-* Install the [Borg](https://borgbackup.readthedocs.io/en/stable/index.html) backup program.
+* Install the [Borg](https://borgbackup.readthedocs.io/en/stable/) backup program.
 * Configure backups to a Borg remote repo.
 * Optionally configure automatic periodic backups to the Borg remote repo.
 * Simplify Borg usage by providing a [utility script](../templates/do_borg.j2).
@@ -27,11 +27,10 @@ Install the Borg backup program, and configure backups to a remote repo.
 ## Repo And Key Basics
 
 * Borg associates one encryption key with one repo.
-* A Borg remote repo provider is a remote server running Borg, which
-  can host multiple remote repos for a user.
-* The user of this role is __strongly advised__ to back up this keyfile to a USB
-  stick and paper copy:
-  [`borg_keys_dir`](../defaults/main/config_file_paths.yml).
+* A Borg remote repo provider is a remote server running Borg, which can host
+  multiple remote repos for a user.
+* _WARNING: ensure that all Borg operations are executed from the same user
+  account._
 
 ## Remote Repo Requirements
 
@@ -43,14 +42,19 @@ Install the Borg backup program, and configure backups to a remote repo.
 
 ### New Remote Repo
 
-* To-do.........................
+* Run this role for the first time, to create the keyfile and initialize the
+  remote repo.
+* __Use the [utility script](../templates/do_borg.j2) to back up the keyfile__
+  to a USB stick or paper copy.
 
 ### Existing Remote Repo
 
 * If this role is being run with the goal of using an existing remote Borg repo,
   then the matching repo key must be used.
-* Manually place the repo key in the correct
-  [`borg_keys_dir`](../defaults/main/config_file_paths.yml).
+* Set [`initialize_borg_remote_repo repos`](../defaults/main/remote_repos.yml) to
+  `false` before this role is run for the first time.
+* Use the [utility script](../templates/do_borg.j2) to import the keyfile from
+  a USB stick or paper copy.
 
 ## Supported Operating Systems
 

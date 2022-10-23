@@ -1,0 +1,13 @@
+# true: treat Borg remote repo as an empty repo, and initialize it as required
+# false: treat Borg remote repo as an existing repo, and never initialize it
+# NOTE: "initializing" creates a local keyfile and inits the remote repo
+initialize_borg_remote_repo: true
+
+# user-selected Borg remote repo provider
+borg_remote_repo_provider: 'borgbase'
+
+# Borg remote repo providers currently supported by this role
+available_borg_remote_repo_providers:
+  - 'borgbase'
+  - 'rsync.net'
+

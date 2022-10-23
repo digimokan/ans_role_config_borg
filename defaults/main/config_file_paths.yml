@@ -1,0 +1,18 @@
+# dir that holds child config dirs
+borg_config_dir: "/home/{{ borg_user_name }}/.config/borg"
+
+# dir that holds remote repo keys (_NOTE_: don't access directly - use script)
+borg_keys_dir: "{{ borg_config_dir }}/keys"
+
+# dir that holds encyrption sync info between local files and remote repo
+borg_security_dir: "{{ borg_config_dir }}/security"
+
+# dir for cache/sync info between local files and remote repo
+borg_cache_dir: "/home/{{ borg_user_name }}/.cache/borg"
+
+# create and use zfs datasets for all Borg config dirs
+use_zfs_datasets_for_borg_configs_dirs: true
+
+# if using zfs datasets for config dirs, use this zpool
+borg_config_dir_zpool: 'zroot'
+
