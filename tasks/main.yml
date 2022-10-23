@@ -4,9 +4,6 @@
 - name: "Create Borg config dirs"
   ansible.builtin.include_tasks: create_config_dirs/main.yml
 
-- name: "Configure default Borg application settings"
-  ansible.builtin.include_tasks: config_app_settings/main.yml
-
 - name: "Create Borg utility script"
   ansible.builtin.include_tasks: create_util_script/main.yml
 
