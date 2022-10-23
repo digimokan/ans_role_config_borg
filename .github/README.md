@@ -51,7 +51,7 @@ Install the Borg backup program, and configure backups to a remote repo.
 
 * If this role is being run with the goal of using an existing remote Borg repo,
   then the matching repo key must be used.
-* Set [`initialize_borg_remote_repo repos`](../defaults/main/remote_repos.yml) to
+* Set [`initialize_borg_remote_repo`](../defaults/main/remote_repos.yml) to
   `false` before this role is run for the first time.
 * Use the [utility script](../templates/do_borg.j2) to import the keyfile from
   a USB stick or paper copy.
