@@ -1,0 +1,14 @@
+- name: "Create normal filesystem directories for Borg config dirs"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ borg_user_name }}"
+    mode: '755'
+  become: true
+  become_user: root
+  loop:
+    - "{{ borg_config_dir }}"
+    - "{{ borg_keys_dir }}"
+    - "{{ borg_security_dir }}"
+    - "{{ borg_cache_dir }}"
+

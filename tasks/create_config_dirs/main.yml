@@ -1,0 +1,20 @@
+- name: "Create .config and .cache directories for user '{{ borg_user_name }}'"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ borg_user_name }}"
+    mode: '755'
+  become: true
+  become_user: root
+  loop:
+    - "{{ borg_user_config_dir }}"
+    - "{{ borg_user_cache_dir }}"
+
+- name: "Create Borg config dirs as zfs datasets"
+  ansible.builtin.include_tasks: dataset_cache_dirs/main.yml
+  when: use_zfs_datasets_for_borg_configs_dirs
+
+- name: "Create Borg config dirs as normal filesystem directories"
+  ansible.builtin.include_tasks: fs_cache_dirs/main.yml
+  when: not use_zfs_datasets_for_borg_configs_dirs
+
